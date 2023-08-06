@@ -25,12 +25,16 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import CustomIcon from './src/components/CustomIcon';
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+import {searchMovies} from './src/api/apicalls';
 
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  console.log(searchMovies('Avengers'), 'Movie');
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -72,6 +76,7 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <CustomIcon name="search" size={25} />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
